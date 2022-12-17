@@ -1,12 +1,24 @@
-import { Button } from 'flowbite-react';
+// import { Button } from 'flowbite-react';
 import React from 'react';
+import Banner from '../Banner/Banner';
+import BusOperator from '../BusOperator/BusOperator';
+import OurAmenities from '../OurAmenities/OurAmenities';
+import PaymentSystems from '../PaymentSystems/PaymentSystems';
+import SearchForm from '../SearchForm/SearchForm';
+import TopBusRoutes from '../TopBusRoutes/TopBusRoutes';
+import WhyUs from '../WhyUs/WhyUs';
 
 const Home = () => {
     return (
         <div>
             {/* Add the components one by one */}
-            <h1 className='text-red'>testing color</h1>
-            <Button color='red'>click here</Button>
+            <Banner />
+            <SearchForm />
+            <WhyUs />
+            <OurAmenities />
+            <BusOperator />
+            <TopBusRoutes />
+            <PaymentSystems />
         </div>
     );
 };
