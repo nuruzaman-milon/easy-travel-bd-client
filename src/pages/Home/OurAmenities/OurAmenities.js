@@ -91,7 +91,7 @@ const OurAmenities = () => {
             >
               <img src={ourEasyAmenitie.image} alt="" />
 
-              <div className="bg-[#24c58a] w-full text-center py-2 invisible group-hover:visible">
+              <div className="bg-primary w-full text-center py-2 invisible group-hover:visible">
                 <h2 className="text-white">{ourEasyAmenitie.title}</h2>
               </div>
             </div>
