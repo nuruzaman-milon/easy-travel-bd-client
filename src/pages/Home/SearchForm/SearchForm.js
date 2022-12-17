@@ -4,13 +4,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { Modal } from 'flowbite-react';
 
 const SearchForm = () => {
-    const [showInfoModal, setShowInfoModal] = useState(false)
+    const [showInfoModal, setShowInfoModal] = useState(false);
+    const [showCancelModal, setShowCancelModal] = useState(false);
 
 
     return (
-        <section>
-            <h3 className='flex items-center text-2xl bg-blue-600 text-white justify-center py-4'><TiTicket className='mr-2 ' /> Buy Ticket</h3>
-            <div className=' border border-blue-600'>
+        <section className='bg-base'>
+            <h3 className='flex items-center text-2xl bg-primary text-white font-bold justify-center py-4'><TiTicket className='mr-2 ' /> Buy Ticket</h3>
+            <div className=' border border-primary'>
                 <form className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 mx-8 my-6 border px-2 py-6'>
                     {/* From */}
                     <select className='rounded-md'>
@@ -44,42 +45,66 @@ const SearchForm = () => {
                         <option value="Non AC">Non AC</option>
                     </select>
 
-                    <button className='bg-blue-600 py-2 px-4 flex justify-center items-center rounded-md'>
+                    <button className='bg-primary py-2 px-4 flex justify-center items-center rounded-md'>
                         <AiOutlineSearch className='text-2xl text-white' /> &nbsp; <span className='text-xl text-white'>Search</span>
                     </button>
                 </form>
             </div>
 
             <div className='flex flex-col lg:flex-row lg:justify-center mt-6'>
-            <React.Fragment>
-                <button className='bg-green-500 py-2 px-6 mb-3 lg:mb-0 lg:mr-4 rounded' onClick={() => setShowInfoModal(true)}>
-                    How to Buy Ticket
-                </button>
-                <Modal
-                    show={showInfoModal ? true : false}
-                    onClick={() => setShowInfoModal(false)}
-                >
-                    <Modal.Header>
-                        Terms of Service
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div className="space-y-6">
-                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                            </p>
-                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                            </p>
-                        </div>
-                    </Modal.Body>
-                </Modal>
-            </React.Fragment>
-                <button className='bg-yellow-400 py-2 px-6 rounded '>How to Cancel Ticket</button>
+
+                <React.Fragment>
+                    <button className='bg-green-500 py-2 px-6 mb-3 lg:mb-0 lg:mr-4 rounded' onClick={() => setShowInfoModal(true)}>
+                        How to Buy Ticket
+                    </button>
+                    <Modal
+                        show={showInfoModal ? true : false}
+                        onClose={() => setShowInfoModal(false)}
+                    >
+                        <Modal.Header>
+                            <span className='text-center'>How to Buy Ticket</span>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div className="space-y-6">
+                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+                                </p>
+                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                                </p>
+                            </div>
+                        </Modal.Body>
+                    </Modal>
+                </React.Fragment>
+
+                <React.Fragment>
+                    <button className='bg-yellow-400 py-2 px-6 mb-3 lg:mb-0 lg:mr-4 rounded' onClick={() => setShowCancelModal(true)}>
+                        How to Cancel Ticket
+                    </button>
+                    <Modal
+                        show={showCancelModal ? true : false}
+                        onClose={() => setShowCancelModal(false)}
+                    >
+                        <Modal.Header>
+                            How to Cancel Ticket
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div className="space-y-6">
+                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+                                </p>
+                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                                </p>
+                            </div>
+                        </Modal.Body>
+                    </Modal>
+                </React.Fragment>
+
+
+
+
             </div>
-
-
-
-
 
         </section>
     );
