@@ -1,4 +1,4 @@
-import { Button, Navbar } from 'flowbite-react';
+import { Navbar } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,23 +9,24 @@ const Header = () => {
                 fluid={true}
                 rounded={true}
             >
-                <Link to='/'>
-                    <Navbar.Brand >
+                <Link to='/' className='flex'>
                         <img
                             src="https://flowbite.com/docs/images/logo.svg"
-                            className="mr-3 h-6 sm:h-9"
+                            className="mr-1 h-6 sm:h-9"
                             alt="Flowbite Logo"
                         />
                         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                            Flowbite
+                            Easy Travel BD
                         </span>
-                    </Navbar.Brand>
                 </Link>
 
                 <div className="flex md:order-2">
-                    <Button color="success">
+                    {/* <Button className='bg-primary'>
                         Login/Signup
-                    </Button>
+                    </Button> */}
+                    <button className='bg-primary py-2 px-4 rounded-lg text-white'>
+                        Login | Signup
+                    </button>
                     <Navbar.Toggle />
                 </div>
 
