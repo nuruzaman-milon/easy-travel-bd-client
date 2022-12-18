@@ -82,6 +82,7 @@ const OurAmenities = () => {
         Bus Amenites
       </h1>
       <div>
+        {/* our easy amenities */}
         <div className="grid grid-cols-3  md:grid-cols-6">
           {ourEasyAmenities.map((ourEasyAmenitie) => (
             <div
