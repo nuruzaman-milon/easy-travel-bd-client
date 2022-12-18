@@ -9,7 +9,7 @@ const SearchForm = () => {
 
 
     return (
-        <section className='bg-base'>
+        <section className='bg-base my-10'>
             <h3 className='flex items-center text-2xl bg-primary text-white font-bold justify-center py-4'><TiTicket className='mr-2 ' /> Buy Ticket</h3>
             <div className=' border border-primary'>
                 <form className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 mx-8 my-6 border px-2 py-6'>

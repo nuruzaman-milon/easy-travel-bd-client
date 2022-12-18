@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BusOperator = () => {
+const Login = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const BusOperator = () => {
     );
 };
 
-export default BusOperator;
+export default Login;

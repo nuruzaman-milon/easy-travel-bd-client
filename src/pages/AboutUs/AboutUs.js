@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TopBusRoutes = () => {
+const AboutUs = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const TopBusRoutes = () => {
     );
 };
 
-export default TopBusRoutes;
+export default AboutUs;
