@@ -77,7 +77,7 @@ const ourEasyAmenities = [
 
 const OurAmenities = () => {
   return (
-    <section className="w-[90%] mx-auto my-7 md:my-16">
+    <section className="my-7 md:my-16">
       <h1 className="text-center capitalize text-3xl font-bold mb-14">
         Bus Amenites
       </h1>
