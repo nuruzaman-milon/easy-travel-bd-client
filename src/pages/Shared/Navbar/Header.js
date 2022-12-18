@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className=''>
+        <div>
             <Navbar
                 fluid={true}
-                rounded={true}
+               
+                className="bgPrimary"
             >
                 <Link to='/' className='flex'>
                     <img
@@ -25,7 +26,7 @@ const Header = () => {
                         Login/Signup
                     </Button> */}
                     <Link to='/login'>
-                        <button className='bg-primary py-2 px-4 rounded-lg text-white'>
+                        <button className='bgDeepPrimary py-2 px-4 rounded-lg text-white'>
                             Login | Signup
                         </button>
                     </Link>

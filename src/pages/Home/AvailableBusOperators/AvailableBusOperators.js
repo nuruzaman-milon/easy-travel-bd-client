@@ -14,7 +14,7 @@ import img12 from '../../../assets/icons/bus logo/img (12).png'
 
 const AvailableBusOperators = () => {
     return (
-        <section className='mt-12'>
+        <section className='my-12'>
             <h1 className='text-center font-bold text-primary text-3xl'>AVAILABLE BUS OPERATORS</h1>
             <div className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 py-6'>
                 <div className='flex flex-col justify-center items-center gap-3 p-2 rounded-md bg-gray-100 dark:text-white text-gray-900 font-semibold hover:border-primary hover:border duration-300 h-28 ease-in'>
