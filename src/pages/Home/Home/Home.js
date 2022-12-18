@@ -1,7 +1,9 @@
 // import { Button } from 'flowbite-react';
 import React from 'react';
+import AvailableBusOperators from '../AvailableBusOperators/AvailableBusOperators';
 import Banner from '../Banner/Banner';
 import BusOperator from '../BusOperator/BusOperator';
+import BusRoutes from '../BusRoutes/BusRoutes';
 import OurAmenities from '../OurAmenities/OurAmenities';
 import PaymentSystems from '../PaymentSystems/PaymentSystems';
 import SearchForm from '../SearchForm/SearchForm';
@@ -19,6 +21,8 @@ const Home = () => {
             <BusOperator />
             <TopBusRoutes />
             <PaymentSystems />
+            <BusRoutes></BusRoutes>
+            <AvailableBusOperators></AvailableBusOperators>
         </div>
     );
 };
