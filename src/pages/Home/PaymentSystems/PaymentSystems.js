@@ -2,8 +2,8 @@ import React from 'react';
 
 const PaymentSystems = () => {
     return (
-        <div className="my-10">
-            <h1 className="lg:text-3xl text-center font-bold mt-5 mb-10">Our Online Payment Partner</h1>
+        <div className="my-12">
+            <h1 className="text-center font-bold text-primary text-3xl uppercase mb-8">Our Online Payment Partner</h1>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-y-14">
                 <img className="w-36 h-20 mx-auto" src="https://i.ibb.co/J59T3k6/bkash.png" alt="Bkash-Logo" />
                 <img className="w-36 h-20 mx-auto" src="https://i.ibb.co/3Ynszq6/Nagad-Logo-wine.png" alt="Nagad-Logo" />

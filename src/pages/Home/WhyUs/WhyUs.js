@@ -38,8 +38,8 @@ const whyEasyTravel = [
 
 const WhyUs = () => {
   return (
-    <section className="my-7 md:my-16">
-      <h1 className="text-center capitalize text-3xl font-bold mb-14">
+    <section className="my-12 md:my-16">
+      <h1 className="text-center font-bold text-primary text-3xl uppercase mb-8">
         Why Easy Travel BD
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
