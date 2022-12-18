@@ -9,7 +9,7 @@ const SearchForm = () => {
 
     return (
         <section>
-            <h3 className='flex items-center text-2xl bg-blue-600 text-white justify-center py-4'><TiTicket className='mr-2 ' /> Buy Ticket</h3>
+            <h3 className='flex items-center text-2xl bg-blue-600 text-white justify-center py-4'><TiTicket className='mr-2' /> Buy Ticket</h3>
             <div className=' border border-blue-600'>
                 <form className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 mx-8 my-6 border px-2 py-6'>
                     {/* From */}
