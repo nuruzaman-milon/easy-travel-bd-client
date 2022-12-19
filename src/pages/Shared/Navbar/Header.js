@@ -7,7 +7,7 @@ const Header = () => {
         <div className='bg-primary'>
             <Navbar
                 fluid={true}
-               className="bg-[#2ABFCE] w-[92%] mx-auto"
+               className="bgPrimary w-[92%] mx-auto"
             >
                 <Link to='/' className='flex'>
                     <img
