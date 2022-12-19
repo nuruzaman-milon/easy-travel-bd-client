@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { toast } from 'react-hot-toast';
 import img from '../../assets/images/query.png'
 
+
 const Query = () => {
     const form = useRef();
 
@@ -26,39 +27,61 @@ const Query = () => {
             });
     };
     return (
-        <section className='my-8 relative'>
+        <div className='py-6 md:px-16 '>
+            <h1 className='text-center font-bold text-primary text-3xl'>Let's Get in Touch</h1>
+            <div className='grid md:grid-cols-2 w-[96%] mx-auto'>
 
-            <div className='md:bg-gray-600'>
-                <form ref={form} onSubmit={sendEmail} className='relative md:absolute bg-white md:top-0 md:left-36 w-[96%] md:w-96 mx-auto p-6 rounded-md my-8'>
-                    <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Full Name</label>
-                    <input
-                        name="user_name"
-                        type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Full Name' required />
+                <div className='order-last md:order-first w-[96%] md:w-full mx-auto md:my-8'>
+                    <img className='h-full md:rounded-l-md' src={img} alt="" />
+                </div>
 
-                    <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Email Address</label>
-                    <input
-                        name="user_email"
-                        type="email" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Email Address' required />
+                <form ref={form} onSubmit={sendEmail}
 
-                    <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Subject</label>
-                    <input
-                        name="subject"
-                        type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Subject' required />
+                    className='bg-slate-200 w-[96%] md:w-full mx-auto p-6 md:rounded-r-md my-8'>
+                    <div>
+                        <div className='backdrop-blur grid md:grid-cols-2 md:gap-3'>
+                            <div>
+                                <label for="small-input" className="block mb-1 text-blue-900 font-semibold">First Name</label>
+                                <input
+                                    name="first_name"
+                                    type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='First Name' required />
+                            </div>
+                            <div>
+                                <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Last Name</label>
+                                <input
+                                    name="last_name"
+                                    type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Last Name' />
+                            </div>
+                        </div>
 
-                    <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Message</label>
-                    <textarea name="message" id="" cols="30" rows="10"
-                        className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0 h-24 resize-none"
-                        placeholder='Please Enter Your Message....' required
-                    ></textarea>
+                        <div>
+                            <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Email Address</label>
+                            <input
+                                name="user_email"
+                                type="email" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Email Address' required />
+                        </div>
+
+                        <div>
+                            <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Subject</label>
+                            <input
+                                name="subject"
+                                type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Subject' required />
+                        </div>
+
+                        <div>
+                            <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Message</label>
+                            <textarea name="message" id="" cols="30" rows="10"
+                                className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0 h-24 resize-none"
+                                placeholder='Please Enter Your Message....' required
+                            ></textarea>
+                        </div>
+                    </div>
 
                     <button type="submit" className="w-full inline-block px-2 py-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">SEND MESSAGE
                     </button>
                 </form>
-                <div className='my-10 hidden md:block'>
-                    <img className='h-[540px]' src={img} alt="" />
-                </div>
-            </div>
-        </section>
+            </div >
+        </div >
     );
 };
 
