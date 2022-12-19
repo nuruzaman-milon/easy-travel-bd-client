@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div>
+        <div className='bg-primary'>
             <Navbar
                 fluid={true}
-               
-                className="bgPrimary"
+               className="bg-[#2ABFCE] w-[92%] mx-auto"
             >
                 <Link to='/' className='flex'>
                     <img
@@ -16,15 +15,12 @@ const Header = () => {
                         className="mr-1 h-6 sm:h-9"
                         alt="Flowbite Logo"
                     />
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                    <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
                         Easy Travel BD
                     </span>
                 </Link>
 
                 <div className="flex md:order-2">
-                    {/* <Button className='bg-primary'>
-                        Login/Signup
-                    </Button> */}
                     <Link to='/login'>
                         <button className='bgDeepPrimary py-2 px-4 rounded-lg text-white'>
                             Login | Signup
@@ -34,27 +30,12 @@ const Header = () => {
                 </div>
 
                 <Navbar.Collapse>
-                    <Link to='/'>Home</Link>
-                    <Link to='/about-us'>About Us</Link>
-                    <Link to='/our-partners'>Our Partners</Link>
-                    <Link to='/query'>Query</Link>
-                    <Link to='/contact-us'>Contact Us</Link>
-                    <Link to='/cancel-ticket'>Cancel Tickets</Link>
-                    {/* <Navbar.Link href="/navbars">
-                        About Us
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Our Services
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Query
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Contact Us
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Cancel Tickets
-                    </Navbar.Link> */}
+                    <Link className='text-white font-bold hover:underline underline-offset-2' to='/'>Home</Link>
+                    <Link className='text-white font-bold hover:underline underline-offset-2' to='/about-us'>About Us</Link>
+                    <Link className='text-white font-bold hover:underline underline-offset-2' to='/our-partners'>Our Partners</Link>
+                    <Link className='text-white font-bold hover:underline underline-offset-2' to='/query'>Query</Link>
+                    <Link className='text-white font-bold hover:underline underline-offset-2' to='/contact-us'>Contact Us</Link>
+                    <Link className='text-white font-bold hover:underline underline-offset-2' to='/cancel-ticket'>Cancel Tickets</Link>
                 </Navbar.Collapse>
             </Navbar>
         </div>
