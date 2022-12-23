@@ -26,7 +26,7 @@ const Query = () => {
             });
     };
     return (
-        <div className='py-6 md:px-16 '>
+        <div className='py-6'>
             <h1 className='text-center font-bold text-primary text-3xl'>Send Your Query</h1>
             <div className='grid md:grid-cols-2 w-[96%] mx-auto'>
 
