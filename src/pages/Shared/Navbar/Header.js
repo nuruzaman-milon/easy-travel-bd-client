@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='bg-primary'>
+        <div className=''>
             <Navbar
                 fluid={true}
                 className="w-[92%] mx-auto !bg-primary"
