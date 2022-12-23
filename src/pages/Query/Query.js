@@ -11,7 +11,7 @@ const Query = () => {
         audio.play();
     }
 
-    // ---------------------------------
+    // --------------------------
 
     const sendEmail = (event) => {
         event.preventDefault();
