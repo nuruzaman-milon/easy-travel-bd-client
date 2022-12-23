@@ -31,8 +31,7 @@ const Query = () => {
             <div className='grid md:grid-cols-2 w-[96%] mx-auto'>
 
                 <div className='order-last md:order-first w-[96%] md:w-full mx-auto md:my-8'>
-                    {/* <img className='h-full hidden md:block md:rounded-l-md' src={img} alt="" /> */}
-                    <img className='h-full hidden md:block md:rounded-l-md' src='https://en.motofocus.eu/wp-content/uploads/2021/12/ZF_Bus_Connect-1536x768.jpg' alt="" />
+                    <img className='h-full hidden md:block md:rounded-l-md' src='https://i.ibb.co/1ZrfmtK/query.jpg' alt="" />
                 </div>
 
                 <form ref={form} onSubmit={sendEmail}
