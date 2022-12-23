@@ -7,10 +7,11 @@ const Query = () => {
 
     // sound
     function playSound() {
-        console.log('object');
         const audio = new Audio('https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3');
         audio.play();
     }
+
+    // ---------------------------------
 
     const sendEmail = (event) => {
         event.preventDefault();
