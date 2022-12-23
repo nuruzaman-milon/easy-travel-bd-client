@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const EasyFooter = () => {
     return (
         <footer className="bgDeepPrimary text-white">
-            <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+            <div className="max-w-screen-xl px-4 pt-16 pb-8 mx-auto sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div className="mx-auto">
                         <h2 className="text-xl font-bold text-center">Easy Trave BD</h2>
