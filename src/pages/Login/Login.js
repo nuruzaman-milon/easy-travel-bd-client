@@ -1,6 +1,8 @@
 import { Checkbox, Label, TextInput } from "flowbite-react";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { ImFacebook } from "react-icons/im";
 
 const Login = () => {
   return (
@@ -64,6 +66,22 @@ const Login = () => {
               value="Login"
             />
           </form>
+
+          <div className="flex items-center pt-4 space-x-1">
+            <div className="flex-1 h-px sm:w-16 "></div>
+            <p className="px-3 text-sm dark:text-gray-400">
+              Login with social accounts
+            </p>
+            <div className="flex-1 h-px sm:w-16 "></div>
+          </div>
+          <div className="flex justify-center space-x-4 mt-4">
+            <button className="border p-2 rounded-md hover:bg-white">
+              <FcGoogle className="text-xl"></FcGoogle>
+            </button>
+            <button className="border p-2 rounded-md hover:bg-white">
+              <ImFacebook className="text-xl text-blue-600"></ImFacebook>
+            </button>
+          </div>
         </div>
       </div>
     </section>
