@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-hot-toast';
-import img from '../../assets/images/query.png'
-
 
 const Query = () => {
     const form = useRef();
