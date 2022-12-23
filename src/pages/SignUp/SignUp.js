@@ -1,5 +1,7 @@
 import { Label, TextInput } from "flowbite-react";
 import React from "react";
+import { FcGoogle } from "react-icons/fc";
+import { ImFacebook } from "react-icons/im";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
@@ -68,19 +70,22 @@ const SignUp = () => {
               value="Sign Up"
             />
           </form>
+          <div className="flex items-center pt-4 space-x-1">
+            <div className="flex-1 h-px sm:w-16 "></div>
+            <p className="px-3 text-sm dark:text-gray-400">
+              Sign up with social accounts
+            </p>
+            <div className="flex-1 h-px sm:w-16 "></div>
+          </div>
+          <div className="flex justify-center space-x-4 mt-4">
+            <button className="border p-2 rounded-md hover:bg-white">
+              <FcGoogle className="text-xl"></FcGoogle>
+            </button>
+            <button className="border p-2 rounded-md hover:bg-white">
+              <ImFacebook className="text-xl text-blue-600"></ImFacebook>
+            </button>
+          </div>
         </div>
-        {/*         
-        <p className="text-center mt-3">
-          <small>
-            Already have any account ?
-            <Link
-              to="/login"
-              className=" text-primary hover:underline hover:underline-offset-1"
-            >
-              Click here
-            </Link>
-          </small>
-        </p> */}
       </div>
     </section>
   );
