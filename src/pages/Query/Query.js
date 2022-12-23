@@ -28,29 +28,30 @@ const Query = () => {
     };
     return (
         <div className='py-6 md:px-16 '>
-            <h1 className='text-center font-bold text-primary text-3xl'>Let's Get in Touch</h1>
+            <h1 className='text-center font-bold text-primary text-3xl'>Send Your Query</h1>
             <div className='grid md:grid-cols-2 w-[96%] mx-auto'>
 
                 <div className='order-last md:order-first w-[96%] md:w-full mx-auto md:my-8'>
-                    <img className='h-full md:rounded-l-md' src={img} alt="" />
+                    {/* <img className='h-full hidden md:block md:rounded-l-md' src={img} alt="" /> */}
+                    <img className='h-full hidden md:block md:rounded-l-md' src='https://en.motofocus.eu/wp-content/uploads/2021/12/ZF_Bus_Connect-1536x768.jpg' alt="" />
                 </div>
 
                 <form ref={form} onSubmit={sendEmail}
 
-                    className='bg-slate-200 w-[96%] md:w-full mx-auto p-6 md:rounded-r-md my-8'>
+                    className='bg-slate-100 w-[96%] md:w-full mx-auto p-6 md:rounded-r-md my-8'>
                     <div>
                         <div className='backdrop-blur grid md:grid-cols-2 md:gap-3'>
                             <div>
                                 <label for="small-input" className="block mb-1 text-blue-900 font-semibold">First Name</label>
                                 <input
                                     name="first_name"
-                                    type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='First Name' required />
+                                    type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 focus:border-primary dark:text-white outline-0" placeholder='First Name' required />
                             </div>
                             <div>
                                 <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Last Name</label>
                                 <input
                                     name="last_name"
-                                    type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Last Name' />
+                                    type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 focus:border-primary dark:text-white outline-0" placeholder='Last Name' />
                             </div>
                         </div>
 
@@ -58,14 +59,14 @@ const Query = () => {
                             <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Email Address</label>
                             <input
                                 name="user_email"
-                                type="email" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Email Address' required />
+                                type="email" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white focus:border-primary outline-0" placeholder='Email Address' required />
                         </div>
 
                         <div>
                             <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Subject</label>
                             <input
                                 name="subject"
-                                type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0" placeholder='Subject' required />
+                                type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white focus:border-primary outline-0" placeholder='Subject' required />
                         </div>
 
                         <div>
@@ -77,7 +78,7 @@ const Query = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="w-full inline-block px-2 py-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">SEND MESSAGE
+                    <button type="submit" className="w-full inline-block px-2 py-3 bg-primary text-white font-medium text-xs leading-tight uppercase rounded-md hover:bg-[#0bb0bf] hover:shadow-lg duration-300 ease-in focus:bg-primary focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary active:shadow-lg transition">SEND MESSAGE
                     </button>
                 </form>
             </div >
