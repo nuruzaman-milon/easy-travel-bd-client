@@ -1,8 +1,20 @@
+import { signOut } from 'firebase/auth';
 import { Navbar } from 'flowbite-react';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { auth } from '../../../firebase/firebase.config';
+import { setLogOut } from '../../../redux/userSlice';
 
 const Header = () => {
+    const user = useSelector(state => state.user.user)
+    const dispatch = useDispatch();
+
+    const logOut = () => {
+        signOut(auth)
+            .then(dispatch(setLogOut({ user: null })))
+    }
+
     return (
         <div className='bg-primary'>
             <Navbar
@@ -21,11 +33,17 @@ const Header = () => {
                 </Link>
 
                 <div className="flex md:order-2">
-                    <Link to='/login'>
-                        <button className='py-2 px-4 rounded-lg font-semibold bg-[#11585c] text-white'>
-                            Login | Signup
+                    {user?.uid ?
+                        <button onClick={logOut} className='py-2 px-4 rounded-lg font-semibold bg-[#11585c] text-white'>
+                            Log out
                         </button>
-                    </Link>
+                        :
+                        <Link to='/login'>
+                            <button className='py-2 px-4 rounded-lg font-semibold bg-[#11585c] text-white'>
+                                Login | Signup
+                            </button>
+                        </Link>
+                    }
                     <Navbar.Toggle />
                 </div>
 
