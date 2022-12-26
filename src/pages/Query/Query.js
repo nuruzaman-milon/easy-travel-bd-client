@@ -27,7 +27,7 @@ const Query = () => {
     };
     return (
         <div className='py-6'>
-            <h1 className='text-center font-bold text-primary text-3xl'>Send Your Query</h1>
+            <h1 className='text-center font-bold text-primary text-3xl mt-12'>Send Your Query</h1>
             <div className='grid md:grid-cols-2 w-[96%] mx-auto'>
 
                 <div className='order-last md:order-first w-[96%] md:w-full mx-auto md:my-8'>
