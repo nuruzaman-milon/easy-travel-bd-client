@@ -7,7 +7,9 @@ const Main = () => {
     return (
         <div>
             <Header />
+            <div className='w-[90%] mx-auto'>
             <Outlet />
+            </div>
             <EasyFooter />
         </div>
     );

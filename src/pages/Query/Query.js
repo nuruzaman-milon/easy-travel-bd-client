@@ -26,8 +26,8 @@ const Query = () => {
             });
     };
     return (
-        <div className='py-6 md:px-16 '>
-            <h1 className='text-center font-bold text-primary text-3xl'>Send Your Query</h1>
+        <div className='py-6'>
+            <h1 className='text-center font-bold text-primary text-3xl mt-12'>Send Your Query</h1>
             <div className='grid md:grid-cols-2 w-[96%] mx-auto'>
 
                 <div className='order-last md:order-first w-[96%] md:w-full mx-auto md:my-8'>
@@ -40,13 +40,13 @@ const Query = () => {
                     <div>
                         <div className='backdrop-blur grid md:grid-cols-2 md:gap-3'>
                             <div>
-                                <label for="small-input" className="block mb-1 text-blue-900 font-semibold">First Name</label>
+                                <label htmlfor='small-input' className="block mb-1 text-blue-900 font-semibold">First Name</label>
                                 <input
                                     name="first_name"
                                     type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 focus:border-primary dark:text-white outline-0" placeholder='First Name' required />
                             </div>
                             <div>
-                                <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Last Name</label>
+                                <label htmlfor='small-input' className="block mb-1 text-blue-900 font-semibold">Last Name</label>
                                 <input
                                     name="last_name"
                                     type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 focus:border-primary dark:text-white outline-0" placeholder='Last Name' />
@@ -54,21 +54,21 @@ const Query = () => {
                         </div>
 
                         <div>
-                            <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Email Address</label>
+                            <label htmlfor='small-input' className="block mb-1 text-blue-900 font-semibold">Email Address</label>
                             <input
                                 name="user_email"
                                 type="email" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white focus:border-primary outline-0" placeholder='Email Address' required />
                         </div>
 
                         <div>
-                            <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Subject</label>
+                            <label htmlfor='small-input' className="block mb-1 text-blue-900 font-semibold">Subject</label>
                             <input
                                 name="subject"
                                 type="text" id="small-input" className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white focus:border-primary outline-0" placeholder='Subject' required />
                         </div>
 
                         <div>
-                            <label for="small-input" className="block mb-1 text-blue-900 font-semibold">Message</label>
+                            <label htmlfor='small-input' className="block mb-1 text-blue-900 font-semibold">Message</label>
                             <textarea name="message" id="" cols="30" rows="10"
                                 className="block w-full rounded-md mb-3 p-2 text-gray-900 border dark:bg-slate-400 dark:text-white outline-0 h-24 resize-none"
                                 placeholder='Please Enter Your Message....' required

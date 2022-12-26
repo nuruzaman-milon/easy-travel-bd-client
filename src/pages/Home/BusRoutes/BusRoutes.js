@@ -3,9 +3,9 @@ import road from '../../../assets/icons/road.png'
 
 const BusRoutes = () => {
     return (
-        <section className='mt-12 w-[95%] mx-auto'>
-            <h1 className='text-center font-bold text-primary text-3xl'>TOP BUS ROUTES</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 py-6'>
+        <section className='my-12 md:my-20'>
+            <h1 className='text-center font-bold text-primary text-3xl mb-14'>TOP BUS ROUTES</h1>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 pb-6'>
                 <div className='flex items-center gap-3 py-3 px-3 rounded-md bg-gray-200 dark:text-white text-gray-900'>
                     <img className='w-7' src={road} alt="Road icon" />
                     <p>Madaripur-Dhaka</p>
