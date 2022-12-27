@@ -2,7 +2,10 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <section className='border border-primary py-4 px-8 my-4 mx-4 rounded shadow-sm shadow-primary'>
+       <section >
+        <h1 className='text-center font-bold text-primary text-3xl mt-12'>About Us</h1>
+         <div className='border border-primary py-4 px-8 my-12 mx-4 rounded shadow-sm shadow-primary '>
+            
             {/* div 1 */}
 
             <div>
@@ -44,7 +47,8 @@ const AboutUs = () => {
                 <p className='text-justify flex flex-col'><span className='text-lg font-semibold'>Khubaibul Islam Shakib</span> <span>Production Manager</span></p>
                 <p className='text-justify flex flex-col'><span className='text-lg font-semibold'>Saqib Ahmad</span> <span>Stuff Manager</span></p>
             </div>
-        </section>
+        </div>
+       </section>
     );
 };
 

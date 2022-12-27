@@ -4,16 +4,25 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
+<<<<<<< HEAD
     "@tanstack/react-query": "^4.20.4",
+=======
+<<<<<<< HEAD
+=======
+    "@reduxjs/toolkit": "^1.9.1",
+>>>>>>> da2cd6350297899478c4cd5d8e62d749349c8dc7
+>>>>>>> 552ed6fcbacdc088421cfc870a8a1abd81b7670f
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "firebase": "^9.15.0",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
