@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import AboutUs from "../../pages/AboutUs/AboutUs";
+import CancelTicket from "../../pages/CancelTicket/CancelTicket";
 import ContactUs from "../../pages/ContactUs/ContactUs";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/cancel-ticket',
-                // element:
+                element: <CancelTicket></CancelTicket>
             }
         ]
     }
