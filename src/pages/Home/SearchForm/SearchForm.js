@@ -34,14 +34,16 @@ const SearchForm = () => {
                     <select name='from' className='rounded-md'>
                         <option value="From">From</option>
                         <option value="Dhaka">Dhaka</option>
-                        <option value="Narayangoanj">Narayangoanj</option>
+                        <option value="Cox's Bazar">Cox's Bazar</option>
+                        <option value="Benapole">Benapole</option>
                     </select>
 
                     {/* To */}
                     <select name='to' className='rounded-md'>
                         <option value="From">To</option>
                         <option value="Dhaka">Dhaka</option>
-                        <option value="Narayangoanj">Narayangoanj</option>
+                        <option value="Cox's Bazar">Cox's Bazar</option>
+                        <option value="Benapole">Benapole</option>
                     </select>
 
                     {/* Time */}
