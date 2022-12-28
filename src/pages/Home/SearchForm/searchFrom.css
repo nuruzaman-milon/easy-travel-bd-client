@@ -1,0 +1,22 @@
+.headline{
+    display: block;
+    margin: 10px 0 25px 0;
+    border-bottom: 1px dotted #e4e9f0;
+}
+
+.headline h2 {
+    border-bottom: 2px solid #e74c3c;
+    margin: 0 0 -2px 0;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+.h-full{
+    height: 100%!important;
+}
+.pic6{
+    height: 300px!important;
+    margin: 10px auto;
+}
+.max-w-2xl {
+    max-width: 61rem!important;
+}
