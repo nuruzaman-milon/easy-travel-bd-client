@@ -1,4 +1,4 @@
-import { FileInput, Label } from 'flowbite-react';
+import { Checkbox, FileInput, Label } from 'flowbite-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
@@ -11,55 +11,63 @@ const AddBus = () => {
 
     const handleAddBus = data => {
         // setLoading(true);
-        const { busName, busNumber, date, img, from, to, reportingTime, departureTime, fare, coachType, seatCapacity } = data;
+        const {
+            Blanket, Pillow, Snacks, Water, Wifi, TV, GPS, AC, Emergency_Exit,
+            Reading_Light, Charging_Port, busName, busNumber, date, img, from, to,
+            reportingTime, departureTime, fare, coachType, seatCapacity
+        } = data;
 
-        console.log(busName, busNumber, date, img, from, to, reportingTime, departureTime, fare, coachType);
+        const Facilities = [Blanket, Pillow, Snacks, Water, Wifi, TV, GPS, AC, Emergency_Exit,
+            Reading_Light, Charging_Port,]
+
+        console.log(Facilities);
         // const imageHost = process.env.REACT_APP_imageHost;
         const image = img[0];
         const formData = new FormData();
         formData.append('image', image);
-        fetch(`https://api.imgbb.com/1/upload?key=2c4a26db09c691cf3052908828566aee`, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(imgData => {
-                if (imgData.success) {
-                    const bus = {
-                        email: user?.email,
-                        provider: user?.displayName,
-                        BusName: busName,
-                        Image: imgData.data.url,
-                        BusNumber: busNumber,
-                        Date: date,
-                        DepartureTime: departureTime,
-                        ReportingTime: reportingTime,
-                        From: from,
-                        To: to,
-                        Fare: fare,
-                        CoachType: coachType,
-                        SeatCapacity: seatCapacity
-                    }
+        // fetch(`https://api.imgbb.com/1/upload?key=2c4a26db09c691cf3052908828566aee`, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(imgData => {
+        //         if (imgData.success) {
+        //             const bus = {
+        //                 email: user?.email,
+        //                 provider: user?.displayName,
+        //                 BusName: busName,
+        //                 Image: imgData.data.url,
+        //                 BusNumber: busNumber,
+        //                 Date: date,
+        //                 DepartureTime: departureTime,
+        //                 ReportingTime: reportingTime,
+        //                 From: from,
+        //                 To: to,
+        //                 Fare: fare,
+        //                 CoachType: coachType,
+        //                 SeatCapacity: seatCapacity,
+        //                 Facilities
+        //             }
 
-                    // fetch(`https://resell-bikes-server.vercel.app/products`, {
-                    //     method: "POST",
-                    //     headers: {
-                    //         'content-type': 'application/json',
-                    //         authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    //     },
-                    //     body: JSON.stringify(bus)
-                    // })
-                    //     .then(res => res.json())
-                    //     .then(data => {
-                    //         if (data.acknowledged) {
-                    //             toast.success(`Your Product added successfully`)
-                    //             setLoading(false);
-                    //             navigate('/dashboard/myproducts')
-                    //         }
-                    //     })
-                }
-            })
+        // fetch(`https://resell-bikes-server.vercel.app/products`, {
+        //     method: "POST",
+        //     headers: {
+        //         'content-type': 'application/json',
+        //         authorization: `bearer ${localStorage.getItem('accessToken')}`
+        //     },
+        //     body: JSON.stringify(bus)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.acknowledged) {
+        //             toast.success(`Your Product added successfully`)
+        //             setLoading(false);
+        //             navigate('/dashboard/myproducts')
+        //         }
+        //     })
     }
+    // })
+    // }
 
 
     return (
@@ -161,6 +169,68 @@ const AddBus = () => {
                 </select>
                 {errors.seatCapacity && <p role="alert" className='text-red-600 text-sm'>{errors.seatCapacity?.message}</p>}
 
+                {/* Facilities */}
+                <p className='mt-2 mb-1'>Facilities: </p>
+                <div className="flex gap-4 mb-2 flex-wrap" id="checkbox">
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Blanket' {...register("Blanket")} id="Blanket" />
+                        <Label htmlFor="Blanket">Blanket</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Snacks' {...register("Snacks")} id="Snacks" />
+                        <Label htmlFor="Snacks">Snacks</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Water'  {...register("Water")} id="Water" />
+                        <Label htmlFor="Water">Water</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Wifi' {...register("Wifi")} id="Wifi" />
+                        <Label htmlFor="Wifi">Wifi</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='TV' {...register("TV")} id="TV" />
+                        <Label htmlFor="TV">TV</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='GPS' {...register("GPS")} id="GPS" />
+                        <Label htmlFor="GPS">GPS</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Air Conditioner' {...register("AC")} id="AC" />
+                        <Label htmlFor="AC">Air Conditioner</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Emergency Exit' {...register("Emergency_Exit")} id="Emergency-Exit" />
+                        <Label htmlFor="Emergency-Exit">Emergency Exit</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Reading Light' {...register("Reading_Light")} id="Reading-Light" />
+                        <Label htmlFor="Reading-Light">Reading Light</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Charging Port' {...register("Charging_Port")} id="Charging-Port" />
+                        <Label htmlFor="Charging-Port">Charging Port</Label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox value='Pillow' {...register("Pillow")} id="Pillow" />
+                        <Label htmlFor="Pillow">Pillow</Label>
+                    </div>
+
+                </div>
+
+                {/* Bus Image */}
                 <div id="fileUpload">
                     <div className="mb-2 block ">
                         <Label

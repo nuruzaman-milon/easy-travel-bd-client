@@ -6,6 +6,7 @@ import CancelTicket from "../../pages/CancelTicket/CancelTicket";
 import ContactUs from "../../pages/ContactUs/ContactUs";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
+import MyBuses from "../../pages/MyBuses/MyBuses";
 import OurPartners from "../../pages/OurPartners/OurPartners";
 import Query from "../../pages/Query/Query";
 import SignUp from "../../pages/SignUp/SignUp";
@@ -50,7 +51,11 @@ export const router = createBrowserRouter([
             {
                 path: '/add-buses',
                 element: <AddBus />
-            }
+            },
+            {
+                path: '/my-buses',
+                element: <MyBuses />
+            },
         ]
     }
 ])
