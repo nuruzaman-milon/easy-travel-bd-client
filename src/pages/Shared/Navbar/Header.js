@@ -1,19 +1,27 @@
 import { signOut } from 'firebase/auth';
-import { Navbar } from 'flowbite-react';
-import React from 'react';
+import { Dropdown, Navbar } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase/firebase.config';
 import { setLogOut } from '../../../redux/userSlice';
+import { FaBus, FaPlus, FaSignOutAlt, FaTicketAlt, FaUser, FaUsersCog } from 'react-icons/fa';
 
 const Header = () => {
-    const user = useSelector(state => state.user.user)
+    const [dbUser, setDbUser] = useState([])
+    const { user } = useSelector(state => state.user)
     const dispatch = useDispatch();
-
+    // console.log(dbUser);
     const logOut = () => {
         signOut(auth)
             .then(dispatch(setLogOut({ user: null })))
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setDbUser(data))
+    }, [user])
 
     return (
         <div className='bg-primary'>
@@ -34,9 +42,70 @@ const Header = () => {
 
                 <div className="flex md:order-2">
                     {user?.uid ?
-                        <button onClick={logOut} className='py-2 px-4 rounded-lg font-semibold bg-[#11585c] text-white'>
-                            Log out
-                        </button>
+                        <Dropdown className=''
+                            label={user?.displayName?.slice(0, 1)}
+                            arrowIcon={false}
+                            pill={true}
+                        >
+                            {/* For Admin */}
+                            {
+                                dbUser?.accountType === 'admin' && <>
+                                    <Dropdown.Item icon={FaUser}>
+                                        <Link>
+                                            Profile
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item icon={FaUsersCog}>
+                                        <Link>
+                                            All Users
+                                        </Link>
+                                    </Dropdown.Item>
+                                </>
+                            }
+
+                            {/* For Bus Provider */}
+                            {
+                                dbUser?.accountType === 'busProvider' && <>
+                                    <Dropdown.Item icon={FaUser}>
+                                        <Link>
+                                            Profile
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item icon={FaPlus}>
+                                        <Link to='/add-buses'>
+                                            Add Bus
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item icon={FaBus}>
+                                        <Link>
+                                            Buses
+                                        </Link>
+                                    </Dropdown.Item>
+                                </>
+                            }
+
+                            {/* For Users */}
+                            {
+                                dbUser?.accountType === 'user' && <>
+                                    <Dropdown.Item icon={FaUser}>
+                                        <Link>
+                                            Profile
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item icon={FaTicketAlt}>
+                                        <Link>
+                                            Tickets
+                                        </Link>
+                                    </Dropdown.Item>
+                                </>
+                            }
+                            {/* Logout */}
+                            <Dropdown.Item onClick={logOut} icon={FaSignOutAlt}>
+                                <button>
+                                    Log out
+                                </button>
+                            </Dropdown.Item>
+                        </Dropdown>
                         :
                         <Link to='/login'>
                             <button className='py-2 px-4 rounded-lg font-semibold bg-[#11585c] text-white'>
@@ -69,13 +138,10 @@ const Header = () => {
                         <img className='w-5 h-5' src="https://i.ibb.co/D4LKyqN/receipt.png" alt="" />
                         <Link to='/cancel-ticket'>Cancel Ticket</Link>
                     </div>
-                    {/* <Link className='text-white text-center text-lg hover:underline underline-offset-2' to='/our-partners'>Our Partners</Link>
-                    <Link className='text-white text-center text-lg hover:underline underline-offset-2' to='/query'>Query</Link>
-                    <Link className='text-white text-center text-lg hover:underline underline-offset-2' to='/contact-us'>Contact Us</Link>
-                    <Link className='text-white text-center text-lg hover:underline underline-offset-2' to='/cancel-ticket'>Cancel Tickets</Link> */}
+
                 </Navbar.Collapse>
-            </Navbar>
-        </div>
+            </Navbar >
+        </div >
     );
 };
 

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import AboutUs from "../../pages/AboutUs/AboutUs";
+import AddBus from "../../pages/AddBus/AddBus";
 import CancelTicket from "../../pages/CancelTicket/CancelTicket";
 import ContactUs from "../../pages/ContactUs/ContactUs";
 import Home from "../../pages/Home/Home/Home";
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: '/cancel-ticket',
                 element: <CancelTicket></CancelTicket>
+            },
+            {
+                path: '/add-buses',
+                element: <AddBus />
             }
         ]
     }
