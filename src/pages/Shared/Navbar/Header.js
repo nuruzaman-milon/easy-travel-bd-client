@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase/firebase.config';
 import { setLogOut } from '../../../redux/userSlice';
-import { FaBus, FaSignOutAlt, FaTicketAlt, FaUser, FaUsersCog } from 'react-icons/fa';
+import { FaBus, FaPlus, FaSignOutAlt, FaTicketAlt, FaUser, FaUsersCog } from 'react-icons/fa';
 
 const Header = () => {
     const [dbUser, setDbUser] = useState([])
     const { user } = useSelector(state => state.user)
     const dispatch = useDispatch();
-    console.log(dbUser);
+    // console.log(dbUser);
     const logOut = () => {
         signOut(auth)
             .then(dispatch(setLogOut({ user: null })))
@@ -69,6 +69,11 @@ const Header = () => {
                                     <Dropdown.Item icon={FaUser}>
                                         <Link>
                                             Profile
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item icon={FaPlus}>
+                                        <Link to='/add-buses'>
+                                            Add Bus
                                         </Link>
                                     </Dropdown.Item>
                                     <Dropdown.Item icon={FaBus}>
