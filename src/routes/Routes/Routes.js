@@ -8,6 +8,7 @@ import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import OurPartners from "../../pages/OurPartners/OurPartners";
 import Query from "../../pages/Query/Query";
+import SearchTickets from "../../pages/SearchTickets/SearchTickets/SearchTickets";
 import SignUp from "../../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: '/add-buses',
                 element: <AddBus />
+            },
+            {
+                path: '/search',
+                element: <SearchTickets></SearchTickets>
             }
         ]
     }
