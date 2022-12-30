@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AvailableTrips from '../AvailableTrips/AvailableTrips';
 import FindTicket from '../FindTicket/FindTicket';
@@ -9,8 +9,14 @@ const SearchTickets = () => {
     const location = useLocation();
     const search = location?.state?.search;
     const [open, setOpen] = useState(true)
+    const [data, setData] = useState([]);
+    console.log(data);
 
-    console.log(search)
+    useEffect(() => {
+        fetch(`http://localhost:5000/available-bus/search-data/?date=${search?.date}&from=${search?.from}&to=${search?.to}&coachType=${search?.coachType}`)
+            .then(res => res.json())
+            .then(data => setData(data))
+    }, [search]);
 
     return (
         <section className='my-8'>
