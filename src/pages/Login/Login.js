@@ -1,5 +1,5 @@
 import { Checkbox, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
@@ -12,10 +12,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setError, setLogin } from "../../redux/userSlice";
 import { saveUsers } from "../../api/saveUsers";
+import { useToken } from "../../Hooks/useToken";
 
 const Login = () => {
+  const [loginUserEmail, setLoginUserEmail] = useState('');
+  const [token] = useToken(loginUserEmail);
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => console.log(state.user));
+  // const userInfo = useSelector((state) => console.log(state.user));
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -29,6 +32,7 @@ const Login = () => {
             user: result.user,
           })
         );
+        setLoginUserEmail(result.user.email)
         form.reset();
       })
       .catch((e) => {
@@ -50,6 +54,7 @@ const Login = () => {
             user: result.user,
           })
         );
+        setLoginUserEmail(result.user.email)
         // user information
         const userInfo = {
           name: result?.user?.displayName,
@@ -83,6 +88,7 @@ const Login = () => {
             user: result.user,
           })
         );
+        setLoginUserEmail(result.user.email)
         // user information
         const userInfo = {
           name: result?.user?.displayName,
