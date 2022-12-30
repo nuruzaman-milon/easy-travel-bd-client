@@ -57,6 +57,7 @@ export const router = createBrowserRouter([
                 path: '/my-buses',
                 element: <MyBuses />
             },
+            {
                 path: '/search',
                 element: <SearchTickets></SearchTickets>
             }

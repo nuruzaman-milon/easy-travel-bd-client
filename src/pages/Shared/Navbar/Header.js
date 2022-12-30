@@ -18,7 +18,11 @@ const Header = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`http://localhost:5000/users/${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setDbUser(data))
     }, [user])

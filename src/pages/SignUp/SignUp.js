@@ -4,7 +4,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { Label, Radio, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,9 +18,13 @@ import { setError, setLogin } from "../../redux/userSlice";
 import { saveUsers } from "../../api/saveUsers";
 
 import { toast } from "react-hot-toast";
+import { useToken } from "../../Hooks/useToken";
 // import { data } from "autoprefixer";
 
 const SignUp = () => {
+  const [createdUserEmail, setCreatedUserEmail] = useState('')
+  const [token] = useToken(createdUserEmail);
+
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
   console.log(user);
@@ -45,7 +49,7 @@ const SignUp = () => {
               user: result.user,
             })
           );
-
+          setCreatedUserEmail(result.user.email)
           // user information
           const userInfo = {
             name: fullName,
@@ -88,7 +92,7 @@ const SignUp = () => {
           email: result?.user?.email,
           accountType: "user",
         };
-
+        setCreatedUserEmail(result.user.email)
         // save user data base
         saveUsers(userInfo).then((data) => {
           if (data.acknowledged) {
@@ -115,7 +119,7 @@ const SignUp = () => {
             user: result.user,
           })
         );
-
+        setCreatedUserEmail(result.user.email)
         // user information
         const userInfo = {
           name: result?.user?.displayName,
