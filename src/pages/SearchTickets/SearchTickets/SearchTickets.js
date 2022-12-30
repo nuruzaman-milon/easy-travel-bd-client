@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import AvailableTrips from '../AvailableTrips/AvailableTrips';
 import FindTicket from '../FindTicket/FindTicket';
 import BuyTicket from './BuyTicket';
 import TicketOperation from './TicketOperation';
 
 const SearchTickets = () => {
+    const location = useLocation();
+    const search = location?.state?.search;
     const [open, setOpen] = useState(true)
+
+    console.log(search)
+
     return (
         <section className='my-8'>
             <div className='border-x border-b border-primary'>
