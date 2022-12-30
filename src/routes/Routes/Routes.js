@@ -9,6 +9,7 @@ import Login from "../../pages/Login/Login";
 import MyBuses from "../../pages/MyBuses/MyBuses";
 import OurPartners from "../../pages/OurPartners/OurPartners";
 import Query from "../../pages/Query/Query";
+import SearchTickets from "../../pages/SearchTickets/SearchTickets/SearchTickets";
 import SignUp from "../../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
@@ -56,6 +57,9 @@ export const router = createBrowserRouter([
                 path: '/my-buses',
                 element: <MyBuses />
             },
+                path: '/search',
+                element: <SearchTickets></SearchTickets>
+            }
         ]
     }
 ])
