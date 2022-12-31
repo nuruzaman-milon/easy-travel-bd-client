@@ -15,7 +15,7 @@ export const saveUsers = async (usersInfo) => {
 };
 
 // google save user
-export const saveUsersGoogle = async (usersInfo) => {
+export const updateUser = async (usersInfo) => {
   const url = `http://localhost:5000/users/${usersInfo?.email}`;
 
   const res = await fetch(url, {

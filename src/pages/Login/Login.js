@@ -12,10 +12,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setError, setLogin } from "../../redux/userSlice";
 import { saveUsers } from "../../api/saveUsers";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => console.log(state.user));
+  // const userInfo = useSelector((state) => console.log(state.user));
+  const { user, error } = useSelector((state) => state.user);
+  console.log(user);
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -30,6 +33,7 @@ const Login = () => {
           })
         );
         form.reset();
+        toast.success("User Login successfully");
       })
       .catch((e) => {
         dispatch(
@@ -55,6 +59,7 @@ const Login = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
 
         // save user data base
@@ -88,6 +93,7 @@ const Login = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
 
         // save user data base
@@ -169,6 +175,7 @@ const Login = () => {
               value="Login"
             />
           </form>
+          {error && <small className="text-red-500 mt-2">{error}</small>}
 
           <div className="flex items-center pt-4 space-x-1">
             <div className="flex-1 h-px sm:w-16 "></div>
