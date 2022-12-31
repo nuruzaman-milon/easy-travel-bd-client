@@ -35,7 +35,7 @@ const CancelTicket = () => {
                         />
                     </div>
                     <input
-                        className="bg-primary hover:bg-[#0f9fac] duration-300 ease-in py-2 w-full md:ml-3 mt-3 md:mt-0 px-4 rounded-lg cursor-pointer font-medium text-white"
+                        className="bg-[#11585c] hover:bg-[#0f9fac] duration-300 ease-in py-2 w-full md:ml-3 mt-3 md:mt-0 px-4 rounded-lg cursor-pointer font-medium text-white"
                         type="submit"
                         value="Find Ticket"
                     />

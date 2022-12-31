@@ -8,9 +8,11 @@ import CancelTicket from "../../pages/CancelTicket/CancelTicket";
 import ContactUs from "../../pages/ContactUs/ContactUs";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
+import MyBuses from "../../pages/MyBuses/MyBuses";
 import OurPartners from "../../pages/OurPartners/OurPartners";
 import Profile from "../../pages/Profile/Profile";
 import Query from "../../pages/Query/Query";
+import SearchTickets from "../../pages/SearchTickets/SearchTickets/SearchTickets";
 import SignUp from "../../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([

@@ -1,5 +1,5 @@
 import { Checkbox, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
@@ -12,13 +12,15 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setError, setLogin } from "../../redux/userSlice";
 import { saveUsers } from "../../api/saveUsers";
+import { useToken } from "../../Hooks/useToken";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
   const dispatch = useDispatch();
-  // const userInfo = useSelector((state) => console.log(state.user));
   const { user, error } = useSelector((state) => state.user);
-  console.log(user);
+  // const userInfo = useSelector((state) => console.log(state.user));
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ const Login = () => {
             user: result.user,
           })
         );
+        setLoginUserEmail(result.user.email);
         form.reset();
         toast.success("User Login successfully");
       })
@@ -54,6 +57,7 @@ const Login = () => {
             user: result.user,
           })
         );
+        setLoginUserEmail(result.user.email);
         // user information
         const userInfo = {
           name: result?.user?.displayName,
@@ -88,6 +92,7 @@ const Login = () => {
             user: result.user,
           })
         );
+        setLoginUserEmail(result.user.email);
         // user information
         const userInfo = {
           name: result?.user?.displayName,
