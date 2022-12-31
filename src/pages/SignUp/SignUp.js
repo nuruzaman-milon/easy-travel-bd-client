@@ -55,6 +55,7 @@ const SignUp = () => {
             name: fullName,
             email: email,
             accountType: accountType,
+            isVerified: false,
           };
 
           // user save database
@@ -91,6 +92,7 @@ const SignUp = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
         setCreatedUserEmail(result.user.email)
         // save user data base
@@ -125,6 +127,7 @@ const SignUp = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
 
         // save user data base

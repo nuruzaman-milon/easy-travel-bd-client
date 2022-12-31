@@ -13,11 +13,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setError, setLogin } from "../../redux/userSlice";
 import { saveUsers } from "../../api/saveUsers";
 import { useToken } from "../../Hooks/useToken";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const [loginUserEmail, setLoginUserEmail] = useState('');
+  const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
   const dispatch = useDispatch();
+  const { user, error } = useSelector((state) => state.user);
   // const userInfo = useSelector((state) => console.log(state.user));
 
   const handleLogIn = (e) => {
@@ -32,8 +34,9 @@ const Login = () => {
             user: result.user,
           })
         );
-        setLoginUserEmail(result.user.email)
+        setLoginUserEmail(result.user.email);
         form.reset();
+        toast.success("User Login successfully");
       })
       .catch((e) => {
         dispatch(
@@ -54,12 +57,13 @@ const Login = () => {
             user: result.user,
           })
         );
-        setLoginUserEmail(result.user.email)
+        setLoginUserEmail(result.user.email);
         // user information
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
 
         // save user data base
@@ -88,12 +92,13 @@ const Login = () => {
             user: result.user,
           })
         );
-        setLoginUserEmail(result.user.email)
+        setLoginUserEmail(result.user.email);
         // user information
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
 
         // save user data base
@@ -175,6 +180,7 @@ const Login = () => {
               value="Login"
             />
           </form>
+          {error && <small className="text-red-500 mt-2">{error}</small>}
 
           <div className="flex items-center pt-4 space-x-1">
             <div className="flex-1 h-px sm:w-16 "></div>
