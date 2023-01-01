@@ -46,7 +46,10 @@ const SearchTickets = () => {
                         <section className='my-8'>
                             <h1 className='font-bold text-2xl text-primary'>Available Trips: <span>1</span></h1>
                             <hr className='mb-6 mt-2' />
-                            <AvailableTrips></AvailableTrips>
+                            {
+                               data?.data?.map(totalData => <AvailableTrips key={totalData?._id} totalData={totalData}></AvailableTrips>)
+                            }
+                            {/* <AvailableTrips></AvailableTrips> */}
                         </section>
                         :
                         <section>

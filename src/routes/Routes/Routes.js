@@ -68,6 +68,10 @@ export const router = createBrowserRouter([
         path: "/allBusProviderList",
         element: <AllBusProviderList />,
       },
+      {
+        path: "/search",
+        element: <SearchTickets></SearchTickets>,
+      },
     ],
   },
 ]);
