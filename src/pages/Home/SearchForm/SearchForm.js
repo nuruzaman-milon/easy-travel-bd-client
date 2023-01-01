@@ -12,7 +12,7 @@ const SearchForm = () => {
     const { isLoading, error, data: availableBus } = useQuery({
         queryKey: ['available-bus', 'from-and-to'],
         queryFn: () =>
-            fetch('http://localhost:5000/available-bus/from-and-to').then(res =>
+            fetch('https://easy-travel-bd-server.vercel.app/available-bus/from-and-to').then(res =>
                 res.json()
             )
     })

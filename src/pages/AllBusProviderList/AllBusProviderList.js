@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import Loading from "../../components/Loading/Loading";
 
 const AllBusProviderList = () => {
-  const url = `http://localhost:5000/busProvider`;
+  const url = `https://easy-travel-bd-server.vercel.app/busProvider`;
 
   const {
     data: dbBusProvider = [],
@@ -21,7 +21,7 @@ const AllBusProviderList = () => {
   });
 
   const handleVerify = (id) => {
-    fetch(`http://localhost:5000/busProvider/${id}`, {
+    fetch(`https://easy-travel-bd-server.vercel.app/busProvider/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

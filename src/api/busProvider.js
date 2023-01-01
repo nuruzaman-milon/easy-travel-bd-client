@@ -1,6 +1,6 @@
 // save bus provider information
 export const saveBusProvider = async (busProviderInfo) => {
-  const url = `http://localhost:5000/bus-provider`;
+  const url = `https://easy-travel-bd-server.vercel.app/bus-provider`;
 
   const res = await fetch(url, {
     method: "POST",

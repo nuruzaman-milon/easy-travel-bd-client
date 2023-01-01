@@ -4,24 +4,19 @@ import { Link } from 'react-router-dom';
 const ViewDetails = ({ totalData }) => {
     const { BusName, BusNumber, CoachType, Date, DepartureTime, Facilities, Fare, From, ReportingTime, SeatCapacity, To, SeatCombination, created_at } = totalData;
     const [clicked, setClicked] = useState([]);
+    const [disabled, setDisabled] = useState(null);
     function clickFunc(seatNumber) {
         setClicked((array) => [...array, seatNumber]);
-        
+        setDisabled(seatNumber);
     }
-
-    console.log(clicked);
     //delete a item 
     function deleteItem(number) {
-        console.log(number);
+        // console.log(number);
         const remaining = clicked.filter((del) =>del !== number)
         setClicked(remaining)
     }
-// const removeSecond = () => {
-//     setFruits((current) =>
-//       current.filter((fruit) => fruit.id !== 2)
-//     );
-//   };
-    // console.log(clicked);
+    // clicked.map(disable => setDisabled(disable))
+    console.log(disabled);
     return (
         <section>
             <hr className='border-primary' />
@@ -56,7 +51,7 @@ const ViewDetails = ({ totalData }) => {
                         {/* <div className='grid grid-cols-2 gap-4'> */}
                         <div className={`grid ${SeatCapacity === 36 ? 'grid-cols-4 gap-5' : 'grid-cols-3 gap-6'}  text-center text-white cursor-pointer `}>
                             {
-                                SeatCapacity === 36 && SeatCombination.map((seat, i) => <button onClick={() => clickFunc(seat?.SeatNumber)} className='w-8 p-1 bg-[#008000] rounded-sm'>
+                                SeatCapacity === 36 && SeatCombination.map((seat) => <button onClick={() => clickFunc(seat?.SeatNumber)} className='w-8 p-1 bg-[#008000] rounded-sm'>
                                     {seat?.SeatNumber}
                                 </button>)
                             }

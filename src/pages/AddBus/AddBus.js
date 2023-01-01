@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddBus = () => {
   const [dbBusProvider, setBusProvider] = useState([]);
   const { user } = useSelector((state) => state.user);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -20,7 +20,7 @@ const AddBus = () => {
   const { isVerified } = dbBusProvider;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/busProvider/${user?.email}`)
+    fetch(`https://easy-travel-bd-server.vercel.app/busProvider/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setBusProvider(data));
   }, [user]);
@@ -71,7 +71,7 @@ const AddBus = () => {
             email: user?.email,
             provider: user?.displayName,
             BusName: busName,
-            Image: imgData.data.url,
+            // Image: imgData.data.url,
             BusNumber: busNumber,
             Date: date,
             DepartureTime: departureTime,
@@ -83,7 +83,7 @@ const AddBus = () => {
             SeatCapacity: seatCapacity,
           };
 
-          fetch(`https://resell-bikes-server.vercel.app/products`, {
+          fetch(`https://easy-travel-bd-server.vercel.app/available-bus`, {
               method: "POST",
               headers: {
                   'content-type': 'application/json',
@@ -96,7 +96,7 @@ const AddBus = () => {
                   if (data.acknowledged) {
                       toast.success(`Bus added successfully`)
                       // setLoading(false);
-                      // navigate('/dashboard/myproducts')
+                      navigate('/')
                   }
               })
         }
@@ -259,20 +259,15 @@ const AddBus = () => {
                 </p>
               )}
 
-              <div id="fileUpload">
+              {/* <div id="fileUpload">
                 <div className="mb-2 block ">
                   <Label htmlFor="file" value="Upload Bus Image" />
                 </div>
                 <FileInput
                   id="file"
-                  {...register("img", { required: "Bus Image is required" })}
                 />
-                {errors.img && (
-                  <p role="alert" className="text-red-600 text-sm">
-                    {errors.img?.message}
-                  </p>
-                )}
-              </div>
+                
+              </div> */}
             </div>
             <input
               className="bg-primary mt-4 w-full py-2 rounded-lg cursor-pointer"

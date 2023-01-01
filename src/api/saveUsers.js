@@ -1,6 +1,6 @@
 // email and password save user
 export const saveUsers = async (usersInfo) => {
-  const url = `http://localhost:5000/users`;
+  const url = `https://easy-travel-bd-server.vercel.app/users`;
 
   const res = await fetch(url, {
     method: "POST",
@@ -16,7 +16,7 @@ export const saveUsers = async (usersInfo) => {
 
 // google save user
 export const updateUser = async (usersInfo) => {
-  const url = `http://localhost:5000/users/${usersInfo?.email}`;
+  const url = `https://easy-travel-bd-server.vercel.app/users/${usersInfo?.email}`;
 
   const res = await fetch(url, {
     method: "PUT",

@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`https://easy-travel-bd-server.vercel.app/users/${user?.email}`, {
       headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
       }
@@ -38,7 +38,7 @@ const Header = () => {
   }, [user]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/busProvider/${user?.email}`)
+    fetch(`https://easy-travel-bd-server.vercel.app/busProvider/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setBusProvider(data));
   }, [user]);

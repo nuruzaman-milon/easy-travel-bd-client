@@ -13,7 +13,7 @@ const BusProvider = () => {
   // const { email } = user;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://easy-travel-bd-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setDbUser(data));
   }, [user]);
@@ -36,7 +36,7 @@ const BusProvider = () => {
 
     //  save database
 
-    fetch("http://localhost:5000/busProvider", {
+    fetch("https://easy-travel-bd-server.vercel.app/busProvider", {
       method: "POST",
       headers: {
         "content-type": "application/json",

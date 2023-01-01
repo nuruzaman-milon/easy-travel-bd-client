@@ -14,6 +14,7 @@ import Profile from "../../pages/Profile/Profile";
 import Query from "../../pages/Query/Query";
 import SearchTickets from "../../pages/SearchTickets/SearchTickets/SearchTickets";
 import SignUp from "../../pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,19 +55,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-buses",
-        element: <AddBus />,
+        element: <PrivateRoute><AddBus /></PrivateRoute>,
       },
       {
         path: "/profile/:email",
-        element: <Profile />,
+        element: <PrivateRoute><Profile /></PrivateRoute>
       },
       {
         path: "/bus-provider",
-        element: <BusProvider />,
+        element: <PrivateRoute><BusProvider /></PrivateRoute> ,
       },
       {
         path: "/allBusProviderList",
-        element: <AllBusProviderList />,
+        element: <PrivateRoute><AllBusProviderList /></PrivateRoute> ,
       },
       {
         path: "/search",

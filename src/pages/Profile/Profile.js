@@ -12,7 +12,7 @@ const Profile = () => {
   const { email } = dbUser;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://easy-travel-bd-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setDbUser(data));
   }, [user]);
@@ -72,7 +72,7 @@ const Profile = () => {
                 id="email1"
                 type="email"
                 placeholder="Your email"
-                defaultValue={email}
+                defaultValue={user?.email}
                 disabled
                 required={true}
               />

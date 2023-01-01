@@ -13,7 +13,7 @@ const SearchTickets = () => {
     console.log(data);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/available-bus/search-data/?date=${search?.date}&from=${search?.from}&to=${search?.to}&coachType=${search?.coachType}`)
+        fetch(`https://easy-travel-bd-server.vercel.app/available-bus/search-data/?date=${search?.date}&from=${search?.from}&to=${search?.to}&coachType=${search?.coachType}`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [search]);
