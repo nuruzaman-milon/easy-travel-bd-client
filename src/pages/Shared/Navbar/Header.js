@@ -21,12 +21,18 @@ const Header = () => {
   const dispatch = useDispatch();
   // console.log(dbUser);
   const { isVerified } = dbBusProvider;
+  console.log(isVerified);
   const logOut = () => {
     signOut(auth).then(dispatch(setLogOut({ user: null })));
+    localStorage.removeItem('accessToken');
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`http://localhost:5000/users/${user?.email}`, {
+      headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+  })
       .then((res) => res.json())
       .then((data) => setDbUser(data));
   }, [user]);
@@ -78,15 +84,16 @@ const Header = () => {
                     <Link to={`/profile/${user?.email}`}>Profile</Link>
                   </Dropdown.Item>
                   <Dropdown.Item icon={FaPlus}>
-                    {isVerified !== true ? (
+                    {isVerified === true ? 
                       <>
-                        <Link to="/bus-provider">Add Bus</Link>
+                      <Link to="/add-buses">Add Bus</Link>
+                        
                       </>
-                    ) : (
+                     : 
                       <>
-                        <Link to="/add-buses">Add Bus</Link>
+                        <Link to="/bus-provider">Add Company</Link>
                       </>
-                    )}
+                    }
                   </Dropdown.Item>
                   <Dropdown.Item icon={FaBus}>
                     <Link>Buses</Link>

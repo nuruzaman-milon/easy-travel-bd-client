@@ -1,11 +1,14 @@
 import { FileInput, Label } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 
 const AddBus = () => {
   const [dbBusProvider, setBusProvider] = useState([]);
   const { user } = useSelector((state) => state.user);
+  // const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -80,22 +83,22 @@ const AddBus = () => {
             SeatCapacity: seatCapacity,
           };
 
-          // fetch(`https://resell-bikes-server.vercel.app/products`, {
-          //     method: "POST",
-          //     headers: {
-          //         'content-type': 'application/json',
-          //         authorization: `bearer ${localStorage.getItem('accessToken')}`
-          //     },
-          //     body: JSON.stringify(bus)
-          // })
-          //     .then(res => res.json())
-          //     .then(data => {
-          //         if (data.acknowledged) {
-          //             toast.success(`Your Product added successfully`)
-          //             setLoading(false);
-          //             navigate('/dashboard/myproducts')
-          //         }
-          //     })
+          fetch(`https://resell-bikes-server.vercel.app/products`, {
+              method: "POST",
+              headers: {
+                  'content-type': 'application/json',
+                  // authorization: `bearer ${localStorage.getItem('accessToken')}`
+              },
+              body: JSON.stringify(bus)
+          })
+              .then(res => res.json())
+              .then(data => {
+                  if (data.acknowledged) {
+                      toast.success(`Bus added successfully`)
+                      // setLoading(false);
+                      // navigate('/dashboard/myproducts')
+                  }
+              })
         }
       });
   };

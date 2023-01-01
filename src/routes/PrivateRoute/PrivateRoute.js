@@ -1,16 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 
 const PrivateRoute = ({ children }) => {
     const { user, isLoading } = useSelector((state) => state.user);
     const location = useLocation();
 
     if (isLoading) {
-        return <div className='flex flex-col justify-center items-center h-screen'>
-            <progress className="progress w-56"></progress>
-            <h2 className='text-2xl'>Loading...</h2>
-        </div>
+        return <Loading></Loading>
 
     }
     if (user?.uid) {

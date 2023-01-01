@@ -4,11 +4,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { Label, Radio, TextInput } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   auth,
   facebookProvider,
@@ -24,7 +24,16 @@ import { useToken } from "../../Hooks/useToken";
 const SignUp = () => {
   const [createdUserEmail, setCreatedUserEmail] = useState('')
   const [token] = useToken(createdUserEmail);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+      window.location.reload();
+    }
+  }, [from, token, navigate])
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
   console.log(user);

@@ -10,7 +10,7 @@ const BusProvider = () => {
   const navigate = useNavigate();
 
   console.log(dbUser);
-  const { email } = dbUser;
+  // const { email } = user;
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
@@ -84,7 +84,7 @@ const BusProvider = () => {
                 id="email1"
                 type="email"
                 placeholder="Your email"
-                defaultValue={email}
+                defaultValue={user?.email}
                 disabled
                 required={true}
               />

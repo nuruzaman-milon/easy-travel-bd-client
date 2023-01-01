@@ -1,6 +1,6 @@
 import { Checkbox, Label, TextInput } from "flowbite-react";
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -18,6 +18,16 @@ import { toast } from "react-hot-toast";
 const Login = () => {
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+      window.location.reload();
+    }
+  }, [from, token, navigate])
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
   // const userInfo = useSelector((state) => console.log(state.user));
