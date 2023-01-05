@@ -1,24 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TiTicket } from "react-icons/ti";
 import { AiOutlineSearch } from "react-icons/ai";
 import HowToBuyModal from './HowToBuyModal';
 import HowToCancelModal from './HowToCancelModal';
+import { useQuery } from '@tanstack/react-query';
 
 const SearchForm = () => {
 
+    //get from and to location data
+    const { isLoading, error, data:availableBus } = useQuery({
+        queryKey: ['available-bus', 'from-and-to'],
+        queryFn: () =>
+          fetch('http://localhost:5000/available-bus/from-and-to').then(res =>
+            res.json()
+          )
+      })
+    
+      if (isLoading) return 'Loading...'
+    
+      if (error) return 'An error has occurred: ' + error.message
+
+      //get unique from value
+    const uniqueFromValue = [...new Set(availableBus?.data.map(item => item?.From))];
+      //get unique from value
+    const uniqueToValue = [...new Set(availableBus?.data.map(item => item?.To))];
+  
+    
     const handleSearch = e => {
         e.preventDefault();
         const form = e.target;
         const from = form.from.value;
         const to = form.to.value;
-        const timePeriod = form.timePeriod.value;
+        // const timePeriod = form.timePeriod.value;
         const date = form.date.value;
         const coachType = form.coachType.value;
 
         const search = {
             from,
             to,
-            timePeriod,
+            // timePeriod,
             date,
             coachType
         }
@@ -26,33 +46,33 @@ const SearchForm = () => {
     }
 
     return (
-        <section className='bg-base my-10'>
+        <section className='bg-base my-10 '>
             <h3 className='flex items-center text-2xl bg-primary text-white font-bold justify-center py-4'><TiTicket className='mr-2 ' /> Buy Ticket</h3>
-            <div className=' border border-primary'>
+            <div className='border border-primary'>
                 <form onSubmit={handleSearch} className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 mx-8 my-6 border px-2 py-6'>
                     {/* From */}
                     <select name='from' className='rounded-md'>
                         <option value="From">From</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Cox's Bazar">Cox's Bazar</option>
-                        <option value="Benapole">Benapole</option>
+                        {
+                            uniqueFromValue.map((data,i) => <option key={i} value={data}>{data}</option>)
+                        }
                     </select>
 
                     {/* To */}
                     <select name='to' className='rounded-md'>
                         <option value="From">To</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Cox's Bazar">Cox's Bazar</option>
-                        <option value="Benapole">Benapole</option>
+                        {
+                            uniqueToValue.map((data,i) => <option key={i} value={data}>{data}</option>)
+                        }
                     </select>
 
                     {/* Time */}
-                    <select name='timePeriod' className='rounded-md'>
+                    {/* <select name='timePeriod' className='rounded-md'>
                         <option value="Time Period">Time Period</option>
                         <option value="Morning (5:00Am-11:59Am)">Morning (5:00Am-11:59Am)</option>
                         <option value="Afternoon (12:00PM-5:59PM)">Afternoon (12:00PM-5:59PM)</option>
                         <option value="Night (6:00PM-11:59PM)">Night (6:00PM-11:59PM)</option>
-                    </select>
+                    </select> */}
 
                     {/* Calender */}
                     <input name='date' type="date" className='rounded-md' />

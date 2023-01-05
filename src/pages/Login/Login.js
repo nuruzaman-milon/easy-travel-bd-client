@@ -4,64 +4,107 @@ import { NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, facebookProvider, googleProvider } from "../../firebase/firebase.config";
+import {
+  auth,
+  facebookProvider,
+  googleProvider,
+} from "../../firebase/firebase.config";
 import { useDispatch, useSelector } from "react-redux";
 import { setError, setLogin } from "../../redux/userSlice";
+import { saveUsers } from "../../api/saveUsers";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const userInfo = useSelector(state => console.log(state.user))
+  const userInfo = useSelector((state) => console.log(state.user));
 
-  const handleLogIn = e => {
+  const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     signInWithEmailAndPassword(auth, email, password)
-      .then(result => {
-        dispatch(setLogin({
-          user: result.user
-        }))
+      .then((result) => {
+        dispatch(
+          setLogin({
+            user: result.user,
+          })
+        );
         form.reset();
       })
-      .catch(e => {
-        dispatch(setError({
-          error: e.message
-        }))
-      })
-  }
+      .catch((e) => {
+        dispatch(
+          setError({
+            error: e.message,
+          })
+        );
+      });
+  };
 
   // Google Sign in
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
-      .then(result => {
+      .then((result) => {
         // console.log(result.user)
-        dispatch(setLogin({
-          user: result.user
-        }))
+        dispatch(
+          setLogin({
+            user: result.user,
+          })
+        );
+        // user information
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          accountType: "user",
+        };
+
+        // save user data base
+        saveUsers(userInfo).then((data) => {
+          if (data.acknowledged) {
+            console.log(data);
+          }
+        });
       })
-      .catch(e => {
-        dispatch(setError({
-          error: e.message
-        }))
-      })
-  }
+      .catch((e) => {
+        dispatch(
+          setError({
+            error: e.message,
+          })
+        );
+      });
+  };
 
   // Facebook Sign in
   const handleFacebookSignIn = () => {
     signInWithPopup(auth, facebookProvider)
-      .then(result => {
+      .then((result) => {
         // console.log(result.user)
-        dispatch(setLogin({
-          user: result.user
-        }))
+        dispatch(
+          setLogin({
+            user: result.user,
+          })
+        );
+        // user information
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          accountType: "user",
+        };
+
+        // save user data base
+        saveUsers(userInfo).then((data) => {
+          if (data.acknowledged) {
+            console.log(data);
+          }
+        });
       })
-      .catch(e => {
-        dispatch(setError({
-          error: e.message
-        }))
-      })
-  }
+      .catch((e) => {
+        dispatch(
+          setError({
+            error: e.message,
+          })
+        );
+      });
+  };
 
   return (
     <section className="lg:w-1/3 mx-auto my-7 md:my-16">
@@ -135,10 +178,16 @@ const Login = () => {
             <div className="flex-1 h-px sm:w-16 "></div>
           </div>
           <div className="flex justify-center space-x-4 mt-4">
-            <button onClick={handleGoogleSignIn} className="border p-2 rounded-md hover:bg-white">
+            <button
+              onClick={handleGoogleSignIn}
+              className="border p-2 rounded-md hover:bg-white"
+            >
               <FcGoogle className="text-xl"></FcGoogle>
             </button>
-            <button onClick={handleFacebookSignIn} className="border p-2 rounded-md hover:bg-white">
+            <button
+              onClick={handleFacebookSignIn}
+              className="border p-2 rounded-md hover:bg-white"
+            >
               <ImFacebook className="text-xl text-blue-600"></ImFacebook>
             </button>
           </div>

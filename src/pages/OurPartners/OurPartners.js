@@ -12,7 +12,7 @@ const OurPartners = () => {
                         <h1 className='font-bold lg:text-3xl md:text-2xl sm:text-xl uppercase mb-4 text-center'>Green Line Paribahan</h1>
                         <div className='flex justify-evenly'>
                             <div>
-                                <h3 className='lg:text-xl font-semibold mb-2'>Our Roads</h3>
+                                <h3 className='lg:text-xl font-semibold mb-2'>Our Famous Roads</h3>
                                 <div>
                                     <p className='flex items-center gap-x-2'><img className='w-5' src={road} alt="" />Dhaka - Chittagong</p>
                                     <p className='flex items-center gap-x-2'><img className='w-5' src={road} alt="" />Chittagong - Dhaka</p>
