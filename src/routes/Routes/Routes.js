@@ -63,15 +63,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bus-provider",
-        element: <PrivateRoute><BusProvider /></PrivateRoute> ,
+        element: <PrivateRoute><BusProvider /></PrivateRoute>,
       },
       {
         path: "/allBusProviderList",
-        element: <PrivateRoute><AllBusProviderList /></PrivateRoute> ,
+        element: <PrivateRoute><AllBusProviderList /></PrivateRoute>,
       },
       {
         path: "/search",
         element: <SearchTickets></SearchTickets>,
+      },
+      {
+        path: "/myBuses",
+        element: <MyBuses></MyBuses>,
       },
     ],
   },
