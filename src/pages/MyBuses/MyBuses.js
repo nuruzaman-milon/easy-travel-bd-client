@@ -5,7 +5,6 @@ import MyBusRow from './MyBusRow';
 
 const MyBuses = () => {
     const [viewDetails, setViewDetails] = useState(false)
-    // console.log(viewDetails);
     return (
         <section className='my-8'>
             <div>
