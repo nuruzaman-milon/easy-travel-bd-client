@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const ViewDetails = () => {
+const ViewDetails = ({ totalData }) => {
+    const { BusName, BusNumber, CoachType, Date, DepartureTime, Facilities, Fare, From, ReportingTime, SeatCapacity, To, SeatCombination, created_at } = totalData;
+    const [clicked, setClicked] = useState([]);
+    const [disabled, setDisabled] = useState(null);
+    function clickFunc(seatNumber) {
+        setClicked((array) => [...array, seatNumber]);
+        setDisabled(seatNumber);
+    }
+    //delete a item 
+    function deleteItem(number) {
+        // console.log(number);
+        const remaining = clicked.filter((del) =>del !== number)
+        setClicked(remaining)
+    }
+    // clicked.map(disable => setDisabled(disable))
+    console.log(disabled);
     return (
         <section>
             <hr className='border-primary' />
@@ -33,129 +48,21 @@ const ViewDetails = () => {
                         <h1>Front</h1>
                     </div>
                     <div className='flex justify-between items-center gap-10'>
-                        <div className='grid grid-cols-2 gap-4'>
-                            <div className='grid grid-cols-1 gap-2 text-center text-white cursor-pointer'>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    A1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    B1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    C1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    D1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    E1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    F1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    G1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    H1
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    I1
-                                </div>
-                            </div>
+                        {/* <div className='grid grid-cols-2 gap-4'> */}
+                        <div className={`grid ${SeatCapacity === 36 ? 'grid-cols-4 gap-5' : 'grid-cols-3 gap-6'}  text-center text-white cursor-pointer `}>
+                            {
+                                SeatCapacity === 36 && SeatCombination.map((seat) => <button onClick={() => clickFunc(seat?.SeatNumber)} className='w-8 p-1 bg-[#008000] rounded-sm'>
+                                    {seat?.SeatNumber}
+                                </button>)
+                            }
+                            {
+                                SeatCapacity === 27 && SeatCombination.map(seat => <button onClick={() => clickFunc(seat?.SeatNumber)} className='w-8 p-1 bg-[#008000] rounded-sm'>
+                                {seat?.SeatNumber}
+                            </button>)
+                            }
 
-                            <div className='grid grid-cols-1 gap-2 text-center text-white cursor-pointer'>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    A2
-                                </div>
-                                <div className='w-8 p-1 bg-gray-600 rounded-sm'>
-                                    B2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    C2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    D2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    E2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    F2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    G2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    H2
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    I2
-                                </div>
-                            </div>
                         </div>
-
-
-                        <div className='grid grid-cols-2 gap-4'>
-                            <div className='grid grid-cols-1 gap-2 text-center text-white cursor-pointer'>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    A3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    B3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    C3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    D3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    E3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    F3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    G3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    H3
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    I3
-                                </div>
-                            </div>
-                            <div className='grid grid-cols-1 gap-2 text-center text-white cursor-pointer'>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    A4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    B4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    C4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    D4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    E4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    F4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    G4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    H4
-                                </div>
-                                <div className='w-8 p-1 bg-[#008000] rounded-sm'>
-                                    I4
-                                </div>
-                            </div>
-                        </div>
+                        {/* </div> */}
                     </div>
                 </div>
 
@@ -167,18 +74,21 @@ const ViewDetails = () => {
                             <th className='border border-gray-600 p-2'>Fare (TK)</th>
                             <th className='border border-gray-600 p-2'>Action</th>
                         </tr>
+                            {
+                                clicked.map(singleClick => <tr className='border border-gray-600'>
+                                <td className='border border-gray-600 p-2'>
+                                    <div className='text-white text-center mx-auto w-8 p-1 bg-gray-600 rounded-sm'>
+                                        {singleClick}
+                                    </div>
+                                </td>
+                                <td className='border border-gray-600 p-2 text-center'>৳{Fare}</td>
+                                <td className='border border-gray-600 p-2 text-center'><button onClick={()=>deleteItem(singleClick)} className='bg-red-600 px-2 text-white'>X</button></td>
+                            </tr>)
+                            }
+                        
                         <tr className='border border-gray-600'>
-                            <td className='border border-gray-600 p-2'>
-                                <div className='text-white text-center mx-auto w-8 p-1 bg-gray-600 rounded-sm'>
-                                    B2
-                                </div>
-                            </td>
-                            <td className='border border-gray-600 p-2'>Total Amount (TK) : 1500</td>
-                            <td className='border border-gray-600 p-2 text-center'><button className='bg-red-600 px-2 text-white'>X</button></td>
-                        </tr>
-                        <tr className='border border-gray-600'>
-                            <td className='border border-gray-600 p-2'>Total Selected Seats : 1</td>
-                            <td className='p-2'>Total Amount (TK) : 1500</td>
+                            <td className='border border-gray-600 p-2'>Total Selected Seats : {clicked.length}</td>
+                            <td className='p-2'>Total Amount (TK) : {clicked.length * Fare}</td>
                         </tr>
                     </table>
 

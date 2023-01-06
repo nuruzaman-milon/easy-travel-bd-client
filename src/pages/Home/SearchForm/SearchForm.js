@@ -1,48 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TiTicket } from "react-icons/ti";
 import { AiOutlineSearch } from "react-icons/ai";
 import HowToBuyModal from './HowToBuyModal';
 import HowToCancelModal from './HowToCancelModal';
 import { useQuery } from '@tanstack/react-query';
+import { Navigate } from 'react-router-dom';
 
 const SearchForm = () => {
-
+    const [search, setSearch] = useState(null)
     //get from and to location data
-    const { isLoading, error, data:availableBus } = useQuery({
+    const { isLoading, error, data: availableBus } = useQuery({
         queryKey: ['available-bus', 'from-and-to'],
         queryFn: () =>
-          fetch('http://localhost:5000/available-bus/from-and-to').then(res =>
-            res.json()
-          )
-      })
-    
-      if (isLoading) return 'Loading...'
-    
-      if (error) return 'An error has occurred: ' + error.message
+            fetch('https://easy-travel-bd-server.vercel.app/available-bus/from-and-to').then(res =>
+                res.json()
+            )
+    })
 
-      //get unique from value
+    if (isLoading) return 'Loading...'
+
+    if (error) return 'An error has occurred: ' + error.message
+
+    //get unique from value
     const uniqueFromValue = [...new Set(availableBus?.data.map(item => item?.From))];
-      //get unique from value
+    //get unique from value
     const uniqueToValue = [...new Set(availableBus?.data.map(item => item?.To))];
-  
-    
+
+
     const handleSearch = e => {
         e.preventDefault();
         const form = e.target;
         const from = form.from.value;
         const to = form.to.value;
-        // const timePeriod = form.timePeriod.value;
         const date = form.date.value;
         const coachType = form.coachType.value;
 
         const search = {
             from,
             to,
-            // timePeriod,
             date,
             coachType
         }
-        console.log(search);
+        setSearch(search)
+
+    }
+    if (search) {
+        return <Navigate to='/search' state={{ search }} replace></Navigate>
     }
 
     return (
@@ -54,7 +57,7 @@ const SearchForm = () => {
                     <select name='from' className='rounded-md'>
                         <option value="From">From</option>
                         {
-                            uniqueFromValue.map((data,i) => <option key={i} value={data}>{data}</option>)
+                            uniqueFromValue.map((data, i) => <option key={i} value={data}>{data}</option>)
                         }
                     </select>
 
@@ -62,7 +65,7 @@ const SearchForm = () => {
                     <select name='to' className='rounded-md'>
                         <option value="From">To</option>
                         {
-                            uniqueToValue.map((data,i) => <option key={i} value={data}>{data}</option>)
+                            uniqueToValue.map((data, i) => <option key={i} value={data}>{data}</option>)
                         }
                     </select>
 

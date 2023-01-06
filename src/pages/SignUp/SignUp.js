@@ -4,11 +4,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { Label, Radio, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   auth,
   facebookProvider,
@@ -18,9 +18,22 @@ import { setError, setLogin } from "../../redux/userSlice";
 import { saveUsers } from "../../api/saveUsers";
 
 import { toast } from "react-hot-toast";
+import { useToken } from "../../Hooks/useToken";
 // import { data } from "autoprefixer";
 
 const SignUp = () => {
+  const [createdUserEmail, setCreatedUserEmail] = useState('')
+  const [token] = useToken(createdUserEmail);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+      window.location.reload();
+    }
+  }, [from, token, navigate])
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
   console.log(user);
@@ -45,12 +58,13 @@ const SignUp = () => {
               user: result.user,
             })
           );
-
+          setCreatedUserEmail(result.user.email)
           // user information
           const userInfo = {
             name: fullName,
             email: email,
             accountType: accountType,
+            isVerified: false,
           };
 
           // user save database
@@ -87,8 +101,9 @@ const SignUp = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
-
+        setCreatedUserEmail(result.user.email)
         // save user data base
         saveUsers(userInfo).then((data) => {
           if (data.acknowledged) {
@@ -115,12 +130,13 @@ const SignUp = () => {
             user: result.user,
           })
         );
-
+        setCreatedUserEmail(result.user.email)
         // user information
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email,
           accountType: "user",
+          isVerified: false,
         };
 
         // save user data base
