@@ -16,12 +16,7 @@ const MyBusDetails = () => {
                     </div>
                     <h1>Sold Seat</h1>
                 </div>
-                <div className='flex items-center'>
-                    <div className='w-4 h-4 bg-gray-600 mr-1'>
 
-                    </div>
-                    <h1>Selected Seat</h1>
-                </div>
             </div>
 
             <div className='grid md:grid-cols-4 gap-4'>

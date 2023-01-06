@@ -5,11 +5,11 @@ import MyBusRow from './MyBusRow';
 
 const MyBuses = () => {
     const [viewDetails, setViewDetails] = useState(false)
-    console.log(viewDetails);
+    // console.log(viewDetails);
     return (
         <section className='my-8'>
             <div>
-                <h1 className='mb-3 font-bold text-2xl'>My Buses <span className='p-1 rounded-full w-4 bg-primary text-white text-center'>2</span></h1>
+                <h1 className='mb-3 font-bold text-2xl'>My Buses <span className='px-2 rounded-full w-4 bg-primary text-white text-center'>1</span></h1>
                 <table>
                     <thead className='bg-primary'>
                         <tr className='bg-primary'>
@@ -29,7 +29,7 @@ const MyBuses = () => {
                     </tbody>
                 </table>
                 {
-                    viewDetails && <MyBusDetails></MyBusDetails>
+                    viewDetails && <MyBusDetails className='transition-all duration-500'></MyBusDetails>
                 }
             </div>
         </section>

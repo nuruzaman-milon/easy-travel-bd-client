@@ -30,9 +30,9 @@ const Header = () => {
   useEffect(() => {
     fetch(`https://easy-travel-bd-server.vercel.app/users/${user?.email}`, {
       headers: {
-          authorization: `bearer ${localStorage.getItem('accessToken')}`
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
       }
-  })
+    })
       .then((res) => res.json())
       .then((data) => setDbUser(data));
   }, [user]);
@@ -84,19 +84,19 @@ const Header = () => {
                     <Link to={`/profile/${user?.email}`}>Profile</Link>
                   </Dropdown.Item>
                   <Dropdown.Item icon={FaPlus}>
-                    {isVerified === true ? 
+                    {isVerified === true ?
                       <>
-                      <Link to="/add-buses">Add Bus</Link>
-                        
+                        <Link to="/add-buses">Add Bus</Link>
+
                       </>
-                     : 
+                      :
                       <>
                         <Link to="/bus-provider">Add Company</Link>
                       </>
                     }
                   </Dropdown.Item>
                   <Dropdown.Item icon={FaBus}>
-                    <Link>Buses</Link>
+                    <Link to='/my-buses'>Buses</Link>
                   </Dropdown.Item>
                 </>
               )}
